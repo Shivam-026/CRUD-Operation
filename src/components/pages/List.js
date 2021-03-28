@@ -10,7 +10,7 @@ const Home = () => {
 
     const loadUsers = async () => {
         const result = await axios.get("http://localhost:3003/users");
-        setUser(result.data.reverse());
+        setUser(result.data);
     };
 
     const deleteUser = async id => {
@@ -22,14 +22,16 @@ const Home = () => {
     return (
         <div className="container">
             <div className="py-4">
-                <h1>Home Page</h1>
+                <h1>Patient List</h1>
                 <table class="table border shadow">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">No.</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">User Name</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Bed No.</th>
+                            <th scope="col">Patient Name</th>
+                            <th scope="col">Patient Critical Level</th>
+                            <th scope="col">Pin-Code</th>
+                            <th scope="col">Hospital</th>
+                            <th scope="col">Time Slot</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -39,12 +41,14 @@ const Home = () => {
                                 <tr>
                                     <th scope="row">{index + 1}</th>
                                     <td>{user.name}</td>
-                                    <td>{user.username}</td>
-                                    <td>{user.email}</td>
+                                    <td>{user.level}</td>
+                                    <td>{user.pin}</td>
+                                    <td>{user.hospital}</td>
+                                    <td>{user.time}</td>
                                     <td>
-                                        <Link class="btn btn-primary mr-2" to = {`/users/${user.id}`}>view</Link>
-                                        <Link class="btn btn-outline-primary mr-2" to = {`/users/edit/${user.id}`}>Edit</Link>
-                                        <Link class="btn btn-danger mr-2" onClick={()=>deleteUser(user.id)}>Delete</Link>
+                                        <Link class="btn btn-primary mr-2" to = {`/users/${user.id}`}>view Detail</Link>
+                                        <Link class="btn btn-outline-primary mr-2 my-2" to = {`/users/edit/${user.id}`}>Reschedule</Link><br></br>
+                                        <Link class="btn btn-outline-danger mr-2" onClick={()=>deleteUser(user.id)}>Cancel</Link>
                                     </td>
                                 </tr>
                             ))

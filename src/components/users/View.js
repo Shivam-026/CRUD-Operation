@@ -5,10 +5,10 @@ import { Link, useParams } from "react-router-dom";
 const User = () => {
     const [user, setUser] = useState({
         name: "",
-        username: "",
-        email: "",
-        phone: "",
-        website: ""
+        level: "",
+        pin: "",
+        hospital: "",
+        time: ""
     });
     const { id } = useParams();
     useEffect(() => {
@@ -28,11 +28,11 @@ const User = () => {
             <h1 className="display-4">User Id: {id}</h1>
             <hr />
             <ul className="list-group w-50">
-                <li className="list-group-item">Name: {user.name}</li>
-                <li className="list-group-item">User Name: {user.username}</li>
-                <li className="list-group-item">E-mail: {user.email}</li>
-                <li className="list-group-item">Phone: {user.phone}</li>
-                <li className="list-group-item">Website: {user.website}</li>
+                <li className="list-group-item">Patient Name: {user.name}</li>
+                <li className="list-group-item">Critcal Level: {user.level}</li>
+                <li className="list-group-item">Pin-Code: {user.pin}</li>
+                <li className="list-group-item">Hospital Name: {user.hospital}</li>
+                <li className="list-group-item">Time-Slot: {user.time}</li>
 
             </ul>
         </div>
